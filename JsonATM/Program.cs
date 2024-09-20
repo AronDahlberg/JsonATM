@@ -14,14 +14,14 @@
 
             ATM.Run();
         }
-        private static Account[] PopulatedAccounts()
+        private static List<Account> PopulatedAccounts()
         {
-            Account[] accounts = new Account[10];
+            List<Account> accounts = [];
 
             for ( int i = 0; i < 10; i++)
             {
                 string str = $"{i}{i}{i}";
-                accounts[i] = new Account($"{str}-{str}");
+                accounts.Add(new Account($"{str}-{str}"));
                 accounts[i].Deposit(i * 1000);
             }
 

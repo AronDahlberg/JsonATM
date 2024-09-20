@@ -3,9 +3,9 @@ namespace ATM
     class Bank
     {
         private static string ClearConsole { get; } = "\x1b[2J\x1b[H"; // ANSI ESC Code
-        private Account[] Accounts { get; set; }
+        private List<Account> Accounts { get; set; }
         private string Currency { get; set; }
-        public Bank(Account[] accounts, string currency)
+        public Bank(List<Account> accounts, string currency)
         {
             Accounts = accounts;
             Currency = currency;
@@ -82,7 +82,7 @@ namespace ATM
         {
             Console.Write(ClearConsole);
 
-            for (int i = 0; i < Accounts.Length; i++)
+            for (int i = 0; i < Accounts.Count; i++)
             {
                 Console.WriteLine(Accounts[i].ToString() + Currency);
             }
