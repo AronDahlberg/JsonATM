@@ -49,7 +49,7 @@ namespace JsonATM
             try
             {
                 string accountNumber = UserInputAccountNumber();
-                double amount = double.Parse(UserInputAmount());
+                double amount = UserInputAmount();
 
                 Bank.Deposit(accountNumber, amount);
 
@@ -64,7 +64,7 @@ namespace JsonATM
             try
             {
                 string accountNumber = UserInputAccountNumber();
-                double amount = double.Parse(UserInputAmount());
+                double amount = UserInputAmount();
 
                 Bank.Withdraw(accountNumber, amount);
 

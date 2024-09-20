@@ -12,13 +12,13 @@
 
             return Console.ReadLine() ?? "";
         }
-        public static string UserInputAmount()
+        public static double UserInputAmount()
         {
             Console.Write(ClearConsole +
                 "Enter amount\n" +
                 ": ");
 
-            return Console.ReadLine() ?? "";
+            return double.Parse(Console.ReadLine() ?? "");
         }
         public static void WaitUserInput()
         {
