@@ -49,6 +49,11 @@ namespace JsonATM
                 throw new ArgumentException("Invalid account number format\n" +
                                             "Must be xxx-xxx, where x is a digit");
             }
+            if (Accounts.Any(account => account.AccountNumber == accountNumber))
+            {
+                throw new ArgumentException("Invalid account number\n" +
+                                            "Account already exsists");
+            }
             Accounts.Add(new Account(accountNumber));
         }
         public void DeleteAccount(string accountNumber)
