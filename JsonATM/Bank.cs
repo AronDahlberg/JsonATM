@@ -10,7 +10,7 @@ namespace JsonATM
         {
             try
             {
-                var account = GetAccount();
+                var account = GetAccount() ?? throw new NullReferenceException();
 
                 double amount = double.Parse(GetAmount());
 
@@ -32,7 +32,7 @@ namespace JsonATM
         {
             try
             {
-                var account = GetAccount();
+                var account = GetAccount() ?? throw new NullReferenceException();
 
                 double amount = double.Parse(GetAmount());
 
@@ -59,7 +59,7 @@ namespace JsonATM
         {
             try
             {
-                var account = GetAccount();
+                var account = GetAccount() ?? throw new NullReferenceException();
 
                 Console.WriteLine(ClearConsole +
                     $"Balance for account {account.AccountNumber}\n" +
@@ -86,7 +86,7 @@ namespace JsonATM
             Console.Write("Press enter to return");
             Console.ReadLine();
         }
-        private Account GetAccount()
+        private Account? GetAccount()
         {
             string? accountNmr = GetAccountNumber();
 
@@ -98,7 +98,7 @@ namespace JsonATM
                 "Enter account number\n" +
                 ": ");
 
-            return Console.ReadLine();
+            return Console.ReadLine() ?? "";
         }
         private string GetAmount()
         {
@@ -106,7 +106,7 @@ namespace JsonATM
                 "Enter amount\n" +
                 ": ");
 
-            return Console.ReadLine();
+            return Console.ReadLine() ?? "";
         }
     }
 }
