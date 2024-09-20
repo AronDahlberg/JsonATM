@@ -59,7 +59,6 @@ namespace JsonATM
             catch (ArgumentException ex) { ErrorMessage(ex); }
             catch (KeyNotFoundException ex) { ErrorMessage(ex); }
             catch (Exception ex) { UnkownErrorMessage(ex); }
-
             WaitUserInput();
         }
         private void Withdraw()
@@ -77,7 +76,6 @@ namespace JsonATM
             catch (ArgumentException ex) { ErrorMessage(ex); }
             catch (KeyNotFoundException ex) { ErrorMessage(ex); }
             catch (Exception ex) { UnkownErrorMessage(ex); }
-
             WaitUserInput();
         }
         private void PrintBalance()
@@ -93,7 +91,6 @@ namespace JsonATM
             }
             catch (KeyNotFoundException ex) { ErrorMessage(ex); }
             catch (Exception ex) { UnkownErrorMessage(ex); }
-
             WaitUserInput();
         }
         private void PrintAccounts()
@@ -110,7 +107,6 @@ namespace JsonATM
                 }
             }
             catch (Exception ex) { UnkownErrorMessage(ex); }
-
             WaitUserInput();
         }
         private void AddAccount()
@@ -125,7 +121,6 @@ namespace JsonATM
                     $"New account {accountNumber} created");
             }
             catch (Exception ex) { UnkownErrorMessage(ex); }
-
             WaitUserInput();
         }
         private void RemoveAccount()
@@ -141,7 +136,6 @@ namespace JsonATM
             }
             catch (KeyNotFoundException ex) { ErrorMessage(ex); }
             catch (Exception ex) { UnkownErrorMessage(ex); }
-
             WaitUserInput();
         }
     }
