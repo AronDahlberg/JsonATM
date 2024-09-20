@@ -88,11 +88,11 @@ namespace JsonATM
             {
                 Console.Write(ClearConsole);
 
-                var accounts = Bank.GetAccounts();
+                var accounts = Bank.GetAccounts().OrderBy(account => account.AccountNumber);
 
-                for (int i = 0; i < accounts.Count; i++)
+                foreach (var account in accounts)
                 {
-                    Console.WriteLine(accounts[i].ToString() + Bank.Currency);
+                    Console.WriteLine(account.ToString() + Bank.Currency);
                 }
             }
             catch (Exception ex) { ErrorMessage(ex); }
