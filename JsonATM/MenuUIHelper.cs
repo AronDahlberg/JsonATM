@@ -18,12 +18,10 @@
                 "Enter amount\n" +
                 ": ");
 
-            try
-            {
+            try {
                 return double.Parse(Console.ReadLine() ?? "");
             }
-            catch (FormatException ex)
-            {
+            catch (FormatException ex) {
                 throw new ArgumentException("Invalid amount\n" +
                                             "Amount must be a number", ex);
             }
