@@ -14,10 +14,7 @@ namespace JsonATM
 
             return JsonSerializer.Deserialize<List<Account>>(jsonData) ?? [];
         }
-        public void Dispose()
-        {
-            SaveAccountData();
-        }
+        public void Dispose() { SaveAccountData(); }
         public void SaveAccountData()
         {
             string jsonData = JsonSerializer.Serialize(Accounts);
