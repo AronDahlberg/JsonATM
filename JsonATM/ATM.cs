@@ -56,9 +56,7 @@ namespace JsonATM
                 Console.WriteLine(ClearConsole +
                     "Deposit succesfull");
             }
-            catch (ArgumentException ex) { ErrorMessage(ex); }
-            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
-            catch (Exception ex) { UnkownErrorMessage(ex); }
+            catch (Exception ex) { ErrorMessage(ex); }
             WaitUserInput();
         }
         private void Withdraw()
@@ -73,9 +71,7 @@ namespace JsonATM
                 Console.WriteLine(ClearConsole +
                     "Withdrawal succesfull");
             }
-            catch (ArgumentException ex) { ErrorMessage(ex); }
-            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
-            catch (Exception ex) { UnkownErrorMessage(ex); }
+            catch (Exception ex) { ErrorMessage(ex); }
             WaitUserInput();
         }
         private void PrintBalance()
@@ -89,8 +85,7 @@ namespace JsonATM
                     $"Balance for account {accountNumber}\n" +
                     $": {balance}{Bank.Currency}");
             }
-            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
-            catch (Exception ex) { UnkownErrorMessage(ex); }
+            catch (Exception ex) { ErrorMessage(ex); }
             WaitUserInput();
         }
         private void PrintAccounts()
@@ -106,7 +101,7 @@ namespace JsonATM
                     Console.WriteLine(accounts[i].ToString() + Bank.Currency);
                 }
             }
-            catch (Exception ex) { UnkownErrorMessage(ex); }
+            catch (Exception ex) { ErrorMessage(ex); }
             WaitUserInput();
         }
         private void AddAccount()
@@ -120,7 +115,7 @@ namespace JsonATM
                 Console.WriteLine(ClearConsole +
                     $"New account {accountNumber} created");
             }
-            catch (Exception ex) { UnkownErrorMessage(ex); }
+            catch (Exception ex) { ErrorMessage(ex); }
             WaitUserInput();
         }
         private void RemoveAccount()
@@ -134,8 +129,7 @@ namespace JsonATM
                 Console.WriteLine(ClearConsole +
                     $"Account {accountNumber} removed");
             }
-            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
-            catch (Exception ex) { UnkownErrorMessage(ex); }
+            catch (Exception ex) { ErrorMessage(ex); }
             WaitUserInput();
         }
     }

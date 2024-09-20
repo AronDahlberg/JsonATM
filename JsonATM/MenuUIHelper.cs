@@ -30,11 +30,5 @@
             Console.WriteLine(ClearConsole +
                 exception.Message);
         }
-        public static void UnkownErrorMessage(Exception exception)
-        {
-            Console.WriteLine(ClearConsole +
-                "An unkown error has occured:\n" +
-                exception.Message);
-        }
     }
 }
