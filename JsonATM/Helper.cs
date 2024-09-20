@@ -1,4 +1,6 @@
-﻿namespace JsonATM
+﻿using System.Text.RegularExpressions;
+
+namespace JsonATM
 {
     internal static class MenuUIHelper
     {
@@ -35,6 +37,23 @@
         {
             Console.WriteLine(ClearConsole +
                 exception.Message);
+        }
+    }
+    internal static class BankHelper
+    {
+        public static void CheckNegativeAmount(double amount)
+        {
+            if (amount < 0.0)
+            {
+                throw new ArgumentException("Invalid amount\n" +
+                                            "No negative values allowed");
+            }
+        }
+        public static bool IsValidAccountNumber(string accountNumber)
+        {
+            string pattern = @"^\d{3}-\d{3}$"; // Pattern for "xxx-xxx" (x = digit)
+
+            return Regex.IsMatch(accountNumber, pattern);
         }
     }
 }

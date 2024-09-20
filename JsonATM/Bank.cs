@@ -1,5 +1,5 @@
 using System.Text.Json;
-using System.Text.RegularExpressions;
+using static JsonATM.BankHelper;
 
 namespace JsonATM
 {
@@ -76,19 +76,6 @@ namespace JsonATM
         {
             return Accounts.FirstOrDefault(account => account.AccountNumber == accountNumber)
                 ?? throw new KeyNotFoundException("Account not found");
-        }
-        private static void CheckNegativeAmount(double amount)
-        {
-            if (amount < 0.0) {
-                throw new ArgumentException("Invalid amount\n" +
-                                            "No negative values allowed");
-            }
-        }
-        private static bool IsValidAccountNumber(string accountNumber)
-        {
-            string pattern = @"^\d{3}-\d{3}$"; // Pattern for "xxx-xxx" (x = digit)
-
-            return Regex.IsMatch(accountNumber, pattern);
         }
     }
 }
