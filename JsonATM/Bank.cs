@@ -42,6 +42,14 @@ namespace JsonATM
 
             account.Balance -= amount;
         }
+        public void NewAccount(string accountNumber)
+        {
+            Accounts.Add(new Account(accountNumber));
+        }
+        public void DeleteAccount(string accountNumber)
+        {
+            Accounts.Remove(GetAccount(accountNumber));
+        }
         public List<Account> GetAccounts()
         {
             return [.. Accounts]; // Return a copy of the list for security
