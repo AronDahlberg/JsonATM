@@ -6,26 +6,13 @@
         {
             string currency = "kr";
 
-            var accounts = PopulatedAccounts();
+            string bankDataFilePath = "BankData.json";
 
-            Bank bank = new(accounts, currency);
+            using Bank bank = new(currency, bankDataFilePath);
 
             ATM ATM = new(bank);
 
             ATM.Run();
-        }
-        private static List<Account> PopulatedAccounts()
-        {
-            List<Account> accounts = [];
-
-            for ( int i = 0; i < 10; i++)
-            {
-                string str = $"{i}{i}{i}";
-                accounts.Add(new Account($"{str}-{str}"));
-                accounts[i].Balance = i * 1000;
-            }
-
-            return accounts;
         }
     }
 }

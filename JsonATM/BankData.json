@@ -1,0 +1,42 @@
+[
+  {
+    "AccountNumber": "000-000",
+    "Balance": 0
+  },
+  {
+    "AccountNumber": "111-111",
+    "Balance": 1000
+  },
+  {
+    "AccountNumber": "222-222",
+    "Balance": 2000
+  },
+  {
+    "AccountNumber": "333-333",
+    "Balance": 3000
+  },
+  {
+    "AccountNumber": "444-444",
+    "Balance": 4000
+  },
+  {
+    "AccountNumber": "555-555",
+    "Balance": 5000
+  },
+  {
+    "AccountNumber": "666-666",
+    "Balance": 6000
+  },
+  {
+    "AccountNumber": "777-777",
+    "Balance": 7000
+  },
+  {
+    "AccountNumber": "888-888",
+    "Balance": 8000
+  },
+  {
+    "AccountNumber": "999-999",
+    "Balance": 9000
+  }
+]

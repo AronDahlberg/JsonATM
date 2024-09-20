@@ -1,9 +1,28 @@
+using System.Text.Json;
+
 namespace JsonATM
 {
-    class Bank(List<Account> accounts, string currency)
+    class Bank(string currency, string dataFilePath) : IDisposable
     {
-        private List<Account> Accounts { get; set; } = accounts;
+        private List<Account> Accounts { get; set; } = GetAccountData(dataFilePath);
         public string Currency { get; set; } = currency;
+        public string DataFilePath { get; set; } = dataFilePath;
+
+        private static List<Account> GetAccountData(string dataFilePath)
+        {
+            string jsonData = File.ReadAllText(dataFilePath);
+
+            return JsonSerializer.Deserialize<List<Account>>(jsonData) ?? [];
+        }
+        public void Dispose()
+        {
+            SaveAccountData();
+        }
+        public void SaveAccountData()
+        {
+            string jsonData = JsonSerializer.Serialize(Accounts);
+            File.WriteAllText(DataFilePath, jsonData);
+        }
 
         public void Deposit(string accountNumber, double amount)
         {
