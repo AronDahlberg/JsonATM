@@ -28,8 +28,7 @@ namespace JsonATM
 
             Account account = GetAccount(accountNumber);
 
-            if (double.IsInfinity(account.Balance + amount))
-            {
+            if (double.IsInfinity(account.Balance + amount)) {
                 throw new ArgumentException("Invalid amount\n" +
                                             "Balance cannot be infinite");
             }
@@ -42,8 +41,7 @@ namespace JsonATM
 
             Account account = GetAccount(accountNumber);
 
-            if (account.Balance < amount)
-            {
+            if (account.Balance < amount) {
                 throw new ArgumentException("Invalid amount\n" +
                                             "Withdrawal amount cannot exceed balance");
             }
@@ -52,13 +50,11 @@ namespace JsonATM
         }
         public void NewAccount(string accountNumber)
         {
-            if (!IsValidAccountNumber(accountNumber))
-            {
+            if (!IsValidAccountNumber(accountNumber)) {
                 throw new ArgumentException("Invalid account number\n" +
                                             "Format must be 'xxx-xxx', where x is a digit");
             }
-            if (Accounts.Any(account => account.AccountNumber == accountNumber))
-            {
+            if (Accounts.Any(account => account.AccountNumber == accountNumber)) {
                 throw new ArgumentException("Invalid account number\n" +
                                             "Account already exsists");
             }
@@ -83,8 +79,7 @@ namespace JsonATM
         }
         private static void CheckNegativeAmount(double amount)
         {
-            if (amount < 0.0)
-            {
+            if (amount < 0.0) {
                 throw new ArgumentException("Invalid amount\n" +
                                             "No negative values allowed");
             }

@@ -90,8 +90,7 @@ namespace JsonATM
 
                 var accounts = Bank.GetAccounts().OrderBy(account => account.AccountNumber);
 
-                foreach (var account in accounts)
-                {
+                foreach (var account in accounts) {
                     Console.WriteLine(account.ToString() + Bank.Currency);
                 }
             }
