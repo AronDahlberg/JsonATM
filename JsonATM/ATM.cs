@@ -1,4 +1,4 @@
-﻿namespace ATM
+﻿namespace JsonATM
 {
     internal class ATM
     {

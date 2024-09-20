@@ -1,4 +1,4 @@
-namespace ATM
+namespace JsonATM
 {
     class Bank
     {
