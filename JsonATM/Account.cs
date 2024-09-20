@@ -13,16 +13,6 @@
 		}
         public string AccountNumber { get; } = accountNumber;
 
-        public void Deposit (double amount)
-		{
-			if (amount < 0.0) { throw new ArgumentException("Invalid amount"); }
-			Balance += amount;
-		}
-		public void Withdraw (double amount)
-		{
-			if (amount < 0.0) { throw new ArgumentException("Invalid amount"); }
-			Balance -= amount;
-		}
 		public override string ToString()
 		{
 			return $"{AccountNumber}: {Balance}";

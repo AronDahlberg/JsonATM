@@ -41,11 +41,10 @@
         {
             try
             {
-                var account = GetAccount() ?? throw new NullReferenceException();
+                string accountNumber = UserInputAccountNumber();
+                double amount = double.Parse(UserInputAmount());
 
-                double amount = double.Parse(GetAmount());
-
-                account.Deposit(amount);
+                Bank.Deposit(accountNumber, amount);
 
                 Console.WriteLine(ClearConsole +
                     "Deposit succesfull");
@@ -56,23 +55,16 @@
                     "Deposit unsuccesfull");
             }
 
-            Console.Write("Press enter to return");
-            Console.ReadLine();
+            WaitUserInput();
         }
         public void Withdraw()
         {
             try
             {
-                var account = GetAccount() ?? throw new NullReferenceException();
+                string accountNumber = UserInputAccountNumber();
+                double amount = double.Parse(UserInputAmount());
 
-                double amount = double.Parse(GetAmount());
-
-                if (amount > account.Balance)
-                {
-                    throw new ArgumentException("Invalid Amount");
-                }
-
-                account.Withdraw(amount);
+                Bank.Withdraw(accountNumber, amount);
 
                 Console.WriteLine(ClearConsole +
                     "Withdrawal succesfull");
@@ -83,47 +75,41 @@
                     "Withdrawal unsuccesfull");
             }
 
-            Console.Write("Press enter to return");
-            Console.ReadLine();
+            WaitUserInput();
         }
         public void PrintBalance()
         {
             try
             {
-                var account = GetAccount() ?? throw new NullReferenceException();
+                string accountNumber = UserInputAccountNumber();
+                double balance = Bank.GetBalance(accountNumber);
 
                 Console.WriteLine(ClearConsole +
-                    $"Balance for account {account.AccountNumber}\n" +
-                    $": {account.Balance}{Bank.Currency}");
+                    $"Balance for account {accountNumber}\n" +
+                    $": {balance}{Bank.Currency}");
             }
-            catch (NullReferenceException)
+            catch (KeyNotFoundException)
             {
                 Console.WriteLine(ClearConsole +
                     "Could not find account");
             }
 
-            Console.Write("Press enter to return");
-            Console.ReadLine();
+            WaitUserInput();
         }
         public void PrintAccounts()
         {
             Console.Write(ClearConsole);
 
-            for (int i = 0; i < Bank.Accounts.Count; i++)
+            var accounts = Bank.GetAccounts();
+
+            for (int i = 0; i < accounts.Count; i++)
             {
-                Console.WriteLine(Bank.Accounts[i].ToString() + Bank.Currency);
+                Console.WriteLine(accounts[i].ToString() + Bank.Currency);
             }
 
-            Console.Write("Press enter to return");
-            Console.ReadLine();
+            WaitUserInput();
         }
-        private Account? GetAccount()
-        {
-            string? accountNmr = GetAccountNumber();
-
-            return Bank.Accounts.FirstOrDefault(account => account.AccountNumber == accountNmr);
-        }
-        private string GetAccountNumber()
+        private static string UserInputAccountNumber()
         {
             Console.Write(ClearConsole +
                 "Enter account number\n" +
@@ -131,13 +117,18 @@
 
             return Console.ReadLine() ?? "";
         }
-        private string GetAmount()
+        private static string UserInputAmount()
         {
             Console.Write(ClearConsole +
                 "Enter amount\n" +
                 ": ");
 
             return Console.ReadLine() ?? "";
+        }
+        private static void WaitUserInput()
+        {
+            Console.Write("Press enter to return");
+            Console.ReadLine();
         }
     }
 }

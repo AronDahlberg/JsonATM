@@ -22,7 +22,7 @@
             {
                 string str = $"{i}{i}{i}";
                 accounts.Add(new Account($"{str}-{str}"));
-                accounts[i].Deposit(i * 1000);
+                accounts[i].Balance = i * 1000;
             }
 
             return accounts;
