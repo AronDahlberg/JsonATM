@@ -22,7 +22,7 @@
         }
         public static void WaitUserInput()
         {
-            Console.Write("Press enter to return");
+            Console.Write("Press enter to continue");
             Console.ReadLine();
         }
         public static void ErrorMessage(Exception exception)
