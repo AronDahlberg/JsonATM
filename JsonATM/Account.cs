@@ -11,7 +11,7 @@
 					? value
 					: _balance; }
 		}
-        public string AccountNumber { get; } = accountNumber;
+		public string AccountNumber { get; } = accountNumber;
 
 		public override string ToString()
 		{
