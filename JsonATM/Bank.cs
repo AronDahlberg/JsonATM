@@ -27,6 +27,8 @@ namespace JsonATM
 
             Account account = GetAccount(accountNumber);
 
+            if (double.IsInfinity(account.Balance + amount)) { throw new ArgumentException("Invalid amount"); }
+
             account.Balance += amount;
         }
         public void Withdraw(string accountNumber, double amount)

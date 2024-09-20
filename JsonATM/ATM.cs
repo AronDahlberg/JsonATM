@@ -55,11 +55,9 @@
                 Console.WriteLine(ClearConsole +
                     "Deposit succesfull");
             }
-            catch (Exception)
-            {
-                Console.WriteLine(ClearConsole +
-                    "Deposit unsuccesfull");
-            }
+            catch (ArgumentException ex) { ErrorMessage(ex); }
+            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
+            catch (Exception ex) { UnkownErrorMessage(ex); }
 
             WaitUserInput();
         }
@@ -75,11 +73,9 @@
                 Console.WriteLine(ClearConsole +
                     "Withdrawal succesfull");
             }
-            catch (Exception)
-            {
-                Console.WriteLine(ClearConsole +
-                    "Withdrawal unsuccesfull");
-            }
+            catch (ArgumentException ex) { ErrorMessage(ex); }
+            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
+            catch (Exception ex) { UnkownErrorMessage(ex); }
 
             WaitUserInput();
         }
@@ -94,29 +90,25 @@
                     $"Balance for account {accountNumber}\n" +
                     $": {balance}{Bank.Currency}");
             }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine(ClearConsole +
-                    "Could not find account");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine(ClearConsole +
-                    "An error has occured");
-            }
+            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
+            catch (Exception ex) { UnkownErrorMessage(ex); }
 
             WaitUserInput();
         }
         private void PrintAccounts()
         {
-            Console.Write(ClearConsole);
-
-            var accounts = Bank.GetAccounts();
-
-            for (int i = 0; i < accounts.Count; i++)
+            try
             {
-                Console.WriteLine(accounts[i].ToString() + Bank.Currency);
+                Console.Write(ClearConsole);
+
+                var accounts = Bank.GetAccounts();
+
+                for (int i = 0; i < accounts.Count; i++)
+                {
+                    Console.WriteLine(accounts[i].ToString() + Bank.Currency);
+                }
             }
+            catch (Exception ex) { UnkownErrorMessage(ex); }
 
             WaitUserInput();
         }
@@ -131,11 +123,7 @@
                 Console.WriteLine(ClearConsole +
                     $"New account {accountNumber} created");
             }
-            catch (Exception)
-            {
-                Console.WriteLine(ClearConsole +
-                    "Could not create account");
-            }
+            catch (Exception ex) { UnkownErrorMessage(ex); }
 
             WaitUserInput();
         }
@@ -150,16 +138,8 @@
                 Console.WriteLine(ClearConsole +
                     $"Account {accountNumber} removed");
             }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine(ClearConsole +
-                    "Could not find account");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine(ClearConsole +
-                    "An error has occured");
-            }
+            catch (KeyNotFoundException ex) { ErrorMessage(ex); }
+            catch (Exception ex) { UnkownErrorMessage(ex); }
 
             WaitUserInput();
         }
@@ -183,6 +163,17 @@
         {
             Console.Write("Press enter to return");
             Console.ReadLine();
+        }
+        private static void ErrorMessage(Exception exception)
+        {
+            Console.WriteLine(ClearConsole +
+                exception.Message);
+        }
+        private static void UnkownErrorMessage(Exception exception)
+        {
+            Console.WriteLine(ClearConsole +
+                "An unkown error has occured:\n" +
+                exception.Message);
         }
     }
 }
