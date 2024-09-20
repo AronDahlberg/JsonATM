@@ -1,8 +1,9 @@
-﻿namespace JsonATM
+﻿using static JsonATM.MenuUIHelper;
+
+namespace JsonATM
 {
     internal class ATM(Bank bank)
     {
-        private static string ClearConsole { get; } = "\x1b[2J\x1b[H"; // ANSI ESC Code
         private bool IsRunning { get; set; } = true;
         private Bank Bank { get; set; } = bank;
 
@@ -142,38 +143,6 @@
             catch (Exception ex) { UnkownErrorMessage(ex); }
 
             WaitUserInput();
-        }
-        private static string UserInputAccountNumber()
-        {
-            Console.Write(ClearConsole +
-                "Enter account number\n" +
-                ": ");
-
-            return Console.ReadLine() ?? "";
-        }
-        private static string UserInputAmount()
-        {
-            Console.Write(ClearConsole +
-                "Enter amount\n" +
-                ": ");
-
-            return Console.ReadLine() ?? "";
-        }
-        private static void WaitUserInput()
-        {
-            Console.Write("Press enter to return");
-            Console.ReadLine();
-        }
-        private static void ErrorMessage(Exception exception)
-        {
-            Console.WriteLine(ClearConsole +
-                exception.Message);
-        }
-        private static void UnkownErrorMessage(Exception exception)
-        {
-            Console.WriteLine(ClearConsole +
-                "An unkown error has occured:\n" +
-                exception.Message);
         }
     }
 }
