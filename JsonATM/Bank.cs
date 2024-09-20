@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace JsonATM
 {
@@ -43,6 +44,11 @@ namespace JsonATM
         }
         public void NewAccount(string accountNumber)
         {
+            if (!IsValidAccountNumber(accountNumber))
+            {
+                throw new ArgumentException("Invalid account number format\n" +
+                                            "Must be xxx-xxx, where x is a digit");
+            }
             Accounts.Add(new Account(accountNumber));
         }
         public void DeleteAccount(string accountNumber)
@@ -65,6 +71,12 @@ namespace JsonATM
         private static void CheckNegativeAmount(double amount)
         {
             if (amount < 0.0) { throw new ArgumentException("Invalid amount"); }
+        }
+        private static bool IsValidAccountNumber(string accountNumber)
+        {
+            string pattern = @"^\d{3}-\d{3}$"; // Pattern for "xxx-xxx" (x = digit)
+
+            return Regex.IsMatch(accountNumber, pattern);
         }
     }
 }
