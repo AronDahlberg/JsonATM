@@ -1,14 +1,11 @@
 ﻿namespace JsonATM
 {
-    internal class ATM
+    internal class ATM(Bank bank)
     {
         private static string ClearConsole { get; } = "\x1b[2J\x1b[H"; // ANSI ESC Code
         private bool IsRunning { get; set; } = true;
-        private Bank Bank { get; set; }
-        public ATM(Bank bank)
-        {
-            Bank = bank;
-        }
+        private Bank Bank { get; set; } = bank;
+
         public void Run()
         {
             string? input;

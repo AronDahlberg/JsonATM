@@ -1,6 +1,6 @@
 ﻿namespace JsonATM
 {
-    internal class Account
+    internal class Account(string accountNumber)
     {
 		private double _balance;
 
@@ -11,12 +11,9 @@
 					? value
 					: _balance; }
 		}
-		public string AccountNumber { get; }
-		public Account(string accountNumber)
-		{
-			AccountNumber = accountNumber;
-		}
-		public void Deposit (double amount)
+        public string AccountNumber { get; } = accountNumber;
+
+        public void Deposit (double amount)
 		{
 			if (amount < 0.0) { throw new ArgumentException("Invalid amount"); }
 			Balance += amount;

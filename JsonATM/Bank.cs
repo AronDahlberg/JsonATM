@@ -1,15 +1,11 @@
 namespace JsonATM
 {
-    class Bank
+    class Bank(List<Account> accounts, string currency)
     {
         private static string ClearConsole { get; } = "\x1b[2J\x1b[H"; // ANSI ESC Code
-        private List<Account> Accounts { get; set; }
-        private string Currency { get; set; }
-        public Bank(List<Account> accounts, string currency)
-        {
-            Accounts = accounts;
-            Currency = currency;
-        }
+        private List<Account> Accounts { get; set; } = accounts;
+        private string Currency { get; set; } = currency;
+
         public void Deposit()
         {
             try
