@@ -99,6 +99,11 @@
                 Console.WriteLine(ClearConsole +
                     "Could not find account");
             }
+            catch (Exception)
+            {
+                Console.WriteLine(ClearConsole +
+                    "An error has occured");
+            }
 
             WaitUserInput();
         }
@@ -153,7 +158,7 @@
             catch (Exception)
             {
                 Console.WriteLine(ClearConsole +
-                    "Could not remove account");
+                    "An error has occured");
             }
 
             WaitUserInput();
