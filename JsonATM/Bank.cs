@@ -3,7 +3,7 @@ using static JsonATM.BankHelper;
 
 namespace JsonATM
 {
-    class Bank(string currency, string dataFilePath) : IDisposable
+    internal class Bank(string currency, string dataFilePath) : IDisposable
     {
         private List<Account> Accounts { get; set; } = GetAccountData(dataFilePath);
         public string Currency { get; set; } = currency;
