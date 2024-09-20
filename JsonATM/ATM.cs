@@ -5,9 +5,9 @@
         private static string ClearConsole { get; } = "\x1b[2J\x1b[H"; // ANSI ESC Code
         private bool IsRunning { get; set; } = true;
         private Bank Bank { get; set; }
-        public ATM(Account[] accounts, string currency)
+        public ATM(Bank bank)
         {
-            Bank = new Bank(accounts, currency);
+            Bank = bank;
         }
         public void Run()
         {

@@ -8,7 +8,9 @@
 
             var accounts = PopulatedAccounts();
 
-            ATM ATM = new ATM(accounts, currency);
+            var bank = new Bank(accounts, currency);
+
+            ATM ATM = new ATM(bank);
 
             ATM.Run();
         }
